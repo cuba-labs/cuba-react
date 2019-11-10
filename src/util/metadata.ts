@@ -32,14 +32,14 @@ export function getPropertyInfoNN(propertyName: string, entityName: string, meta
 }
 
 export function getEnumCaption(enumValueName: string, propertyInfo: MetaPropertyInfo, enums: EnumInfo[]): string | undefined {
-  const enumInfo = enums.find(enumInfo => enumInfo.name === propertyInfo.type);
+  const enumInfo = enums.find(ei => ei.name === propertyInfo.type);
 
   if (!enumInfo) {
     return undefined;
   }
 
   const enumValue = enumInfo.values
-    .find(enumValue => enumValue.name === enumValueName);
+    .find(ev => ev.name === enumValueName);
 
   if (!enumValue) {
     return undefined;

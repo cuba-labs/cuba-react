@@ -80,7 +80,7 @@ class FileUploadComponent extends React.Component<FileUploadProps & WrappedCompo
 
   handlePreview = (_file: UploadFile): void => {
     getCubaREST()!.getFile(this.fileList[0].uid).then((blob: Blob) => {
-      let objectUrl: string = URL.createObjectURL(blob);
+      const objectUrl: string = URL.createObjectURL(blob);
 
       const fileName: string = this.fileList[0].name;
       if (isImageFile(fileName)) {
