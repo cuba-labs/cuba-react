@@ -1,0 +1,344 @@
+[
+  {
+    "type": "SCREEN",
+    "target": "filterSelect",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "groupConditionFrame",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "customConditionEditor",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "layoutAnalyzer",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "notFoundScreen",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "backgroundWorkProgressWindow",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "main",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "addCondition",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "login",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "multiuploadDialog",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "scr$Car.browse",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "fileUploadDialog",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "dynamicAttributesConditionEditor",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "extendedEditWindowActions",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "dynamicAttributesConditionFrame",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "customConditionFrame",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "thirdpartyLicenseWindow",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "filterEditor",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "editWindowActions",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "saveSetInFolder",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "mainWindow",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "loginWindow",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "saveFilter",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "backgroundWorkWindow",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "application",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "propertyConditionFrame",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "inputDialog",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "runtimePropertiesFrame",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SCREEN",
+    "target": "scr$Car.edit",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "ENTITY_OP",
+    "target": "scr$Car:read",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "ENTITY_OP",
+    "target": "scr$Car:update",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "ENTITY_OP",
+    "target": "scr$Car:create",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "ENTITY_OP",
+    "target": "sec$Filter:read",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "ENTITY_OP",
+    "target": "scr$Car:delete",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "ENTITY_OP",
+    "target": "sys$KeyValueEntity:read",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:manufactureDate",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:technicalCertificate",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:mileage",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:createdBy",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:ecoRank",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:maxPassengers",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:createTs",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:updatedBy",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:updateTs",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:price",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:wheelOnRight",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:purchaseDate",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:regNumber",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:id",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:garage",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:deletedBy",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:deleteTs",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:photo",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "ENTITY_ATTR",
+    "target": "scr$Car:version",
+    "value": "DENY",
+    "intValue": 0
+  },
+  {
+    "type": "SPECIFIC",
+    "target": "cuba.gui.loginToClient",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SPECIFIC",
+    "target": "cuba.restApi.enabled",
+    "value": "ALLOW",
+    "intValue": 1
+  },
+  {
+    "type": "SPECIFIC",
+    "target": "cuba.restApi.fileUpload.enabled",
+    "value": "ALLOW",
+    "intValue": 1
+  }
+]
