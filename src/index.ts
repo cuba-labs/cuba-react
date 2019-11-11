@@ -7,6 +7,7 @@ export * from './data/Instance';
 
 export * from './ui/EntityProperty';
 export * from './ui/FormField';
+export * from './ui/form/FormItem';
 export * from './ui/Msg';
 export * from './ui/table/DataTable';
 export * from './ui/table/DataTableHelpers';
