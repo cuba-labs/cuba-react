@@ -42,7 +42,7 @@
   },
   "scripts": {
     "copycss": "copyfiles -u 1 './src/**/*.css' './dist-transpiled'",
-    "compile": "tsc && npm run copycss && rollup -c",
+    "compile": "npm run clean && tsc && npm run copycss && rollup -c",
     "clean": "rm -rf dist && rm -rf dist-transpiled",
     "test": "jest"
   },
