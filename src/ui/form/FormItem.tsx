@@ -8,6 +8,7 @@ import {Form} from "antd";
 import {FormComponentProps, ValidationRule} from 'antd/lib/form';
 import {GetFieldDecoratorOptions} from 'antd/lib/form/Form';
 import {Msg} from '../Msg';
+import {isFieldAllowed} from '../../util/permissions';
 
 type Props = MainStoreInjected & FormComponentProps & {
   entityName: string
@@ -20,9 +21,11 @@ type Props = MainStoreInjected & FormComponentProps & {
 // noinspection JSUnusedGlobalSymbols
 export const FormItem = injectMainStore(observer((props: Props) => {
 
+  const {entityName, propertyName, rules, optionsContainer, valuePropName} = props;
+  if (!props.mainStore || !isFieldAllowed(entityName, propertyName, props.mainStore.permissions)) return <></>;
+
   const {getFieldDecorator} = props.form;
 
-  const {entityName, propertyName, rules, optionsContainer, valuePropName} = props;
   let opts: GetFieldDecoratorOptions = {};
   if (rules) opts = {... opts, rules};
   if (valuePropName) opts = {... opts, valuePropName};

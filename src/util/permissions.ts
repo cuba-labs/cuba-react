@@ -1,3 +1,6 @@
+import {IObservableArray} from 'mobx';
+import {PermissionInfo} from '@cuba-platform/rest';
+
 export enum PermissionType {
   // noinspection JSUnusedGlobalSymbols
   SCREEN = "SCREEN",
@@ -13,14 +16,9 @@ export enum PermissionValue {
   DENY = "DENY"
 }
 
-export type Permission = {
-  type: PermissionType
-  target: string
-  value: PermissionValue
-  intValue: number
-}
+export function isFieldAllowed(entity: string, field: string, perms: IObservableArray<PermissionInfo> | undefined): boolean {
 
-export function isFieldAllowed(entity: string, field: string, perms: Permission[]): boolean {
+  if (!perms) return false;
 
   if (perms.some(p =>
     p.type === PermissionType.ENTITY_ATTR
