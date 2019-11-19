@@ -8,6 +8,7 @@ import {Form} from "antd";
 import {FormComponentProps, FormItemProps} from 'antd/lib/form';
 import {GetFieldDecoratorOptions} from 'antd/lib/form/Form';
 import {Msg} from '../Msg';
+import {FieldPermissionContainer} from './FieldPermssionContainer';
 
 type Props = MainStoreInjected & FormComponentProps & {
   entityName: string
@@ -33,15 +34,22 @@ export const Field = injectMainStore(observer((props: Props) => {
   const formItemOpts: FormItemProps = {... props.formItemOpts};
   if (!formItemOpts.label) formItemOpts.label = <Msg entityName={entityName} propertyName={propertyName}/>;
 
-  return <Form.Item key={formItemKey ? formItemKey : propertyName} {...formItemOpts}>
+  return (
+    <FieldPermissionContainer entityName={entityName} propertyName={propertyName} render={(isReadOnly) => {
 
-    {getFieldDecorator(fieldDecoratorId ? fieldDecoratorId : propertyName, getFieldDecoratorOpts)(
-      <FormField entityName={entityName}
-                 propertyName={propertyName}
-                 optionsContainer={optionsContainer}
-      />
-    )}
-  </Form.Item>
+      return <Form.Item key={formItemKey ? formItemKey : propertyName}
+                        {...formItemOpts}>
+
+        {getFieldDecorator(fieldDecoratorId ? fieldDecoratorId : propertyName, getFieldDecoratorOpts)(
+          <FormField entityName={entityName}
+                     propertyName={propertyName}
+                     disabled={isReadOnly}
+                     optionsContainer={optionsContainer}
+          />
+        )}
+      </Form.Item>
+
+    }}/>);
 
 }));
 

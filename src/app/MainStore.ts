@@ -1,5 +1,13 @@
 import {action, autorun, computed, IObservableArray, observable} from "mobx";
-import {CubaApp, EntityMessages, EnumInfo, MetaClassInfo, PermissionInfo, UserInfo} from "@cuba-platform/rest";
+import {
+  CubaApp,
+  EntityMessages,
+  EnumInfo,
+  MetaClassInfo,
+  PermissionInfo,
+  RoleInfo, RolesInfo,
+  UserInfo
+} from "@cuba-platform/rest";
 import {inject, IReactComponent, IWrappedComponent} from "mobx-react";
 import * as moment from 'moment';
 
@@ -14,6 +22,7 @@ export class MainStore {
   @observable locale?: string;
 
   @observable permissions?: IObservableArray<PermissionInfo>;
+  @observable roles?: IObservableArray<RoleInfo>;
   permissionsRequestCount = 0;
   @observable metadata?: IObservableArray<MetaClassInfo>;
   metadataRequestCount = 0;
@@ -38,10 +47,11 @@ export class MainStore {
   @action
   loadPermissions() {
     const requestId = ++this.permissionsRequestCount;
-    this.cubaREST.getPermissions()
-      .then(action((perms: PermissionInfo[]) => {
+    this.cubaREST.getRoles()
+      .then(action((rolesInfo: RolesInfo) => {
         if (requestId === this.permissionsRequestCount) {
-          this.permissions = observable(perms);
+          this.permissions = observable(rolesInfo.permissions);
+          this.roles = observable(rolesInfo.roles);
         }
       }));
   }
