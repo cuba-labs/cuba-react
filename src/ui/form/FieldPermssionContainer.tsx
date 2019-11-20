@@ -1,7 +1,6 @@
 import * as React from "react";
 import {observer} from 'mobx-react';
 import {injectMainStore, MainStoreInjected} from "../../app/MainStore";
-import {getAttributePermission} from '@cuba-platform/rest/dist-node/security';
 import {EntityAttrPermissionValue} from '@cuba-platform/rest';
 
 type Props = MainStoreInjected & {
@@ -15,9 +14,9 @@ export const FieldPermissionContainer = injectMainStore(observer((props: Props) 
   if (!props.mainStore) return <></>;
 
   const {entityName, propertyName} = props;
-  const {permissions, roles} = props.mainStore;
+  const {getAttributePermission} = props.mainStore;
 
-  const perm: EntityAttrPermissionValue = getAttributePermission(entityName, propertyName, permissions, roles);
+  const perm: EntityAttrPermissionValue = getAttributePermission(entityName, propertyName);
   const isAllowed = perm === 'MODIFY';
   const isReadOnly = perm === 'VIEW';
 

@@ -1,6 +1,6 @@
 import {action, autorun, computed, IObservableArray, observable} from "mobx";
 import {
-  CubaApp,
+  CubaApp, EntityAttrPermissionValue,
   EntityMessages,
   EnumInfo,
   MetaClassInfo,
@@ -10,6 +10,7 @@ import {
 } from "@cuba-platform/rest";
 import {inject, IReactComponent, IWrappedComponent} from "mobx-react";
 import * as moment from 'moment';
+import {getAttributePermission} from '@cuba-platform/rest/dist-node/security';
 
 export class MainStore {
 
@@ -22,6 +23,7 @@ export class MainStore {
   @observable locale?: string;
 
   @observable permissions?: IObservableArray<PermissionInfo>;
+  @observable.ref private attrPermissionCache: Map<string, EntityAttrPermissionValue> = new Map();
   @observable roles?: IObservableArray<RoleInfo>;
   permissionsRequestCount = 0;
   @observable metadata?: IObservableArray<MetaClassInfo>;
@@ -52,6 +54,7 @@ export class MainStore {
         if (requestId === this.permissionsRequestCount) {
           this.permissions = observable(rolesInfo.permissions);
           this.roles = observable(rolesInfo.roles);
+          this.attrPermissionCache.clear();
         }
       }));
   }
@@ -117,6 +120,17 @@ export class MainStore {
 
   @computed get loginRequired(): boolean {
     return !this.authenticated && !this.usingAnonymously;
+  }
+
+  @computed getAttributePermission(entityName: string, attributeName: string): EntityAttrPermissionValue {
+    const attrFqn = `${entityName}:${attributeName}`;
+
+    let perm = this.attrPermissionCache.get(attrFqn);
+    if (perm != null) return perm;
+
+    perm = getAttributePermission(entityName, attributeName, this.permissions, this.roles);
+    this.attrPermissionCache.set(attrFqn, perm);
+    return perm;
   }
 
   @action
