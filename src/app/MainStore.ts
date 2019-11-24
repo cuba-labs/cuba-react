@@ -1,16 +1,8 @@
 import {action, autorun, computed, IObservableArray, observable} from "mobx";
-import {
-  CubaApp, EntityAttrPermissionValue,
-  EntityMessages,
-  EnumInfo,
-  MetaClassInfo,
-  PermissionInfo,
-  RoleInfo, RolesInfo,
-  UserInfo
-} from "@cuba-platform/rest";
+import {CubaApp, EntityMessages, EnumInfo, MetaClassInfo, UserInfo} from "@cuba-platform/rest";
 import {inject, IReactComponent, IWrappedComponent} from "mobx-react";
 import * as moment from 'moment';
-import {getAttributePermission} from '@cuba-platform/rest/dist-node/security';
+import {Security} from './Security';
 
 export class MainStore {
 
@@ -22,23 +14,21 @@ export class MainStore {
   @observable userName?: string;
   @observable locale?: string;
 
-  @observable permissions?: IObservableArray<PermissionInfo>;
-  @observable.ref private attrPermissionCache: Map<string, EntityAttrPermissionValue> = new Map();
-  @observable roles?: IObservableArray<RoleInfo>;
-  permissionsRequestCount = 0;
   @observable metadata?: IObservableArray<MetaClassInfo>;
   metadataRequestCount = 0;
   @observable messages?: EntityMessages;
   messagesRequestCount = 0;
   @observable enums?: IObservableArray<EnumInfo>;
   enumsRequestCount = 0;
+  security: Security;
 
   constructor(private cubaREST: CubaApp) {
     this.cubaREST.onLocaleChange(this.handleLocaleChange);
+    this.security = new Security(this.cubaREST);
 
     autorun(() => {
       if (this.initialized && (this.authenticated || this.usingAnonymously)) {
-        this.loadPermissions();
+        this.security.loadPermissions();
         this.loadEnums();
         this.loadMetadata();
         this.loadMessages();
@@ -46,19 +36,6 @@ export class MainStore {
     })
   }
 
-  @action
-  loadPermissions() {
-    const requestId = ++this.permissionsRequestCount;
-    // todo Will fail on current and previous versions of REST API. Should be changed once cuba-platform/cuba-rest-js#20 is supported
-    this.cubaREST.getRoles()
-      .then(action((rolesInfo: RolesInfo) => {
-        if (requestId === this.permissionsRequestCount) {
-          this.permissions = observable(rolesInfo.permissions);
-          this.roles = observable(rolesInfo.roles);
-          this.attrPermissionCache.clear();
-        }
-      }));
-  }
 
   @action
   loadEnums() {
@@ -123,16 +100,6 @@ export class MainStore {
     return !this.authenticated && !this.usingAnonymously;
   }
 
-  @computed getAttributePermission(entityName: string, attributeName: string): EntityAttrPermissionValue {
-    const attrFqn = `${entityName}:${attributeName}`;
-
-    let perm = this.attrPermissionCache.get(attrFqn);
-    if (perm != null) return perm;
-
-    perm = getAttributePermission(entityName, attributeName, this.permissions, this.roles);
-    this.attrPermissionCache.set(attrFqn, perm);
-    return perm;
-  }
 
   @action
   login(login: string, password: string) {

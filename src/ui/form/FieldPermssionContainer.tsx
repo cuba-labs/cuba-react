@@ -14,7 +14,7 @@ export const FieldPermissionContainer = injectMainStore(observer((props: Props) 
   if (!props.mainStore) return null;
 
   const {entityName, propertyName} = props;
-  const {getAttributePermission} = props.mainStore;
+  const {getAttributePermission} = props.mainStore.security;
 
   const perm: EntityAttrPermissionValue = getAttributePermission(entityName, propertyName);
   const isAllowed = perm === 'MODIFY';
