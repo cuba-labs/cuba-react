@@ -6,7 +6,7 @@ import {EntityAttrPermissionValue} from '@cuba-platform/rest';
 type Props = MainStoreInjected & {
   entityName: string
   propertyName: string
-  render: (isReadOnly: boolean) => React.ReactNode
+  renderField: (isReadOnly: boolean) => React.ReactNode
 }
 
 export const FieldPermissionContainer = injectMainStore(observer((props: Props) => {
@@ -22,6 +22,6 @@ export const FieldPermissionContainer = injectMainStore(observer((props: Props) 
 
   if (!isAllowed && !isReadOnly) return null;
 
-  return <>{props.render(isReadOnly)}</>
+  return <>{props.renderField(isReadOnly)}</>
 
 }));

@@ -35,7 +35,7 @@ export const Field = injectMainStore(observer((props: Props) => {
   if (!formItemOpts.label) formItemOpts.label = <Msg entityName={entityName} propertyName={propertyName}/>;
 
   return (
-    <FieldPermissionContainer entityName={entityName} propertyName={propertyName} render={(isReadOnly) => {
+    <FieldPermissionContainer entityName={entityName} propertyName={propertyName} renderField={(isReadOnly) => {
 
       return <Form.Item key={formItemKey ? formItemKey : propertyName}
                         {...formItemOpts}>
