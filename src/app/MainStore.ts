@@ -49,6 +49,7 @@ export class MainStore {
   @action
   loadPermissions() {
     const requestId = ++this.permissionsRequestCount;
+    // todo Will fail on current and previous versions of REST API. Should be changed once cuba-platform/cuba-rest-js#20 is supported
     this.cubaREST.getRoles()
       .then(action((rolesInfo: RolesInfo) => {
         if (requestId === this.permissionsRequestCount) {

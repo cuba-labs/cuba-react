@@ -11,7 +11,7 @@ type Props = MainStoreInjected & {
 
 export const FieldPermissionContainer = injectMainStore(observer((props: Props) => {
 
-  if (!props.mainStore) return <></>;
+  if (!props.mainStore) return null;
 
   const {entityName, propertyName} = props;
   const {getAttributePermission} = props.mainStore;
@@ -20,7 +20,7 @@ export const FieldPermissionContainer = injectMainStore(observer((props: Props) 
   const isAllowed = perm === 'MODIFY';
   const isReadOnly = perm === 'VIEW';
 
-  if (!isAllowed && !isReadOnly) return <></>;
+  if (!isAllowed && !isReadOnly) return null;
 
   return <>{props.render(isReadOnly)}</>
 
